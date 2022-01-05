@@ -6,15 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateDevTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('devs', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
             $table->string('username');
             $table->string('bio');

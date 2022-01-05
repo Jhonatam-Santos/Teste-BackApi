@@ -14,14 +14,13 @@ class Dev extends Model
     protected $table = 'devs';
     protected $dateFormat = 'U';
     public $timestamps = true;
-    const CREATED_AT = 'creation_date';
-    const UPDATED_AT = 'updated_date';
 
     protected $casts = [
         'password' => 'string'
     ];
 
     protected $fillable = [
+        'id',
         'name',
         'username',
         'bio',

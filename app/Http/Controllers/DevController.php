@@ -1,110 +1,58 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use App\Post;
+use App\Models\Dev;
 
 class DevController extends Controller
 {
-    public function index()
+    public function get()
     {
-        return response()->json(Post::get());
+        return response()->json(Dev::get());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function post(Request $request)
     {
-        //
+        $dev = new Dev();
+        $dev->name = $request->input('name');
+        $dev->username = $request->input('username');
+        $dev->bio = $request->input('bio');
+        $dev->followers = $request->input('followers');
+        $dev->following = $request->input('following');
+        $dev->stars = $request->input('stars');
+        $dev->organization = $request->input('organization');
+        $dev->location = $request->input('location');
+        $dev->email = $request->input('email');
+        $dev->link = $request->input('link');
+        $dev->web = $request->input('web');
+        $dev->password = $request->input('password');
+
+        $dev->save();
+        return response()->json($dev);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     */
-    public function store(Request $request)
+    public function put(Dev $dev, $id)
     {
-        $post = post::get($id);
-        $post->name = $request->input('name');
-        $post->username = $request->input('username');
-        $post->bio = $request->input('bio');
-        $post->followers = $request->input('followers');
-        $post->following = $request->input('following');
-        $post->stars = $request->input('stars');
-        $post->organization = $request->input('organization');
-        $post->location = $request->input('location');
-        $post->email = $request->input('email');
-        $post->link = $request->input('link');
-        $post->web = $request->input('web');
-        $post->password = $request->input('password');
+        $dev = Dev::get($id);
+        $dev->name = $request->input('name');
+        $dev->username = $request->input('username');
+        $dev->bio = $request->input('bio');
+        $dev->followers = $request->input('followers');
+        $dev->following = $request->input('following');
+        $dev->stars = $request->input('stars');
+        $dev->organization = $request->input('organization');
+        $dev->location = $request->input('location');
+        $dev->email = $request->input('email');
+        $dev->link = $request->input('link');
+        $dev->web = $request->input('web');
+        $dev->password = $request->input('password');
 
-        $post->save();
-        return response()->json($post);
+        return response()->json($dev);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Dev  $dev
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Dev $dev)
+    public function delete(Dev $dev, $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Dev  $dev
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Dev $dev)
-    {
-        $post = Post::get($id);
-        $post->name = $request->input('name');
-        $post->username = $request->input('username');
-        $post->bio = $request->input('bio');
-        $post->followers = $request->input('followers');
-        $post->following = $request->input('following');
-        $post->stars = $request->input('stars');
-        $post->organization = $request->input('organization');
-        $post->location = $request->input('location');
-        $post->email = $request->input('email');
-        $post->link = $request->input('link');
-        $post->web = $request->input('web');
-        $post->password = $request->input('password');
-
-        return response()->json($post);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Dev  $dev
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Dev $dev)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Dev  $dev
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Dev $dev)
-    {
-        return response()->json(Post::destroy($id));
+        return response()->json(Dev::destroy($id));
     }
 
 }
