@@ -27,7 +27,7 @@ class DevController extends Controller
         $dev->web = $request->input('web');
         $dev->password = $request->input('password');
 
-        //$dev->save();
+        $dev->save();
         return response()->json($dev);
     }
 

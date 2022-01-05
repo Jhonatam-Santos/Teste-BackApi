@@ -20,7 +20,6 @@ class Dev extends Model
     ];
 
     protected $fillable = [
-        'id',
         'name',
         'username',
         'bio',
