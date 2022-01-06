@@ -31,9 +31,9 @@ class DevController extends Controller
         return response()->json($dev);
     }
 
-    public function put(Dev $dev, $id)
+    public function put(Dev $devs, Request $request, $id)
     {
-        $dev = Dev::get($id);
+        $dev = $devs->find($id);
         $dev->name = $request->input('name');
         $dev->username = $request->input('username');
         $dev->bio = $request->input('bio');
@@ -47,12 +47,12 @@ class DevController extends Controller
         $dev->web = $request->input('web');
         $dev->password = $request->input('password');
 
-        return response()->json($dev);
+        $dev->save();
     }
 
     public function delete(Dev $dev, $id)
     {
-        return response()->json(Dev::destroy($id));
+        Dev::destroy($id);
     }
 
 }

@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dev extends Model
 {
     protected $table = 'devs';
-    protected $dateFormat = 'U';
+    protected $dateFormat = 'c';
     public $timestamps = true;
 
     protected $casts = [
