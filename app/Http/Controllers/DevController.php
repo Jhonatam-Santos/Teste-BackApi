@@ -31,7 +31,7 @@ class DevController extends Controller
         return response()->json($dev);
     }
 
-    public function put(Dev $devs, Request $request, $id)
+    public function put(Dev $devs, $id, Request $request)
     {
         $dev = $devs->find($id);
         $dev->name = $request->input('name');
