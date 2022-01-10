@@ -14,11 +14,11 @@ class CreateRepositoriesTable extends Migration
     public function up()
     {
         Schema::create('repositories', function (Blueprint $table) {
-            $table->foreignId('id')->constrained('devs');
             $table->increments('repo_id');
-            $table->string('name');
+            $table->string('RepoName');
             $table->string('text');
-            $table->integer('stars');
+            $table->integer('RepoStars');
+            $table->foreignId('dev_id')->constrained('devs')->onDelete('cascade');
             $table->timestamps();
         });
     }

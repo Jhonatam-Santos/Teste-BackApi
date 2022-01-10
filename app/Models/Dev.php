@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dev extends Model
 {
     protected $table = 'devs';
+    protected $primaryKey = 'dev_id';
     protected $dateFormat = 'c';
     public $timestamps = true;
 
@@ -38,5 +39,10 @@ class Dev extends Model
         'password',
         'remember_token',
     ];
+
+    public function repository()
+    {
+        return $this->hasMany(Repository::class)->withTimestamps();
+    }
 
 }

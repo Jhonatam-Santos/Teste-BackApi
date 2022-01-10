@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Repository extends Model
 {
     protected $table = 'repositories';
+    protected $primaryKey = 'repo_id';
     protected $dateFormat = 'c';
     public $timestamps = true;
 
@@ -15,5 +16,14 @@ class Repository extends Model
         'RepoName',
         'text',
         'RepoStars',
+        'dev_id'
     ];
+
+    public function developer()
+    {
+        return $this->belongsTo(Dev::class)->withTimestamps();
+
+
+    }
+
 }
