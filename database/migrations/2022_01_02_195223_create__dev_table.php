@@ -10,7 +10,7 @@ class CreateDevTable extends Migration
     public function up()
     {
         Schema::create('devs', function (Blueprint $table) {
-            $table->increments('dev_id');
+            $table->increments('id');
             $table->string('name');
             $table->string('username');
             $table->string('bio');

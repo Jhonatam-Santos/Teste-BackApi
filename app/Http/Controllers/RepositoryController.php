@@ -14,15 +14,14 @@ class RepositoryController extends Controller
         return response()->json(Repository::get());
     }
 
-    public function post(Request $request, Dev $dev)
+    public function post(Request $request)
     {
-
         $repo = new Repository();
-        $repo->RepoName = $request->input('RepoName');
+        $repo->repo_name = $request->input('repo_name');
         $repo->text = $request->input('text');
-        $repo->RepoStars = $request->input('RepoStars');
-        $id = $dev->find($request->input('dev_id'));
-        $repo->dev_id = $id;
+        $repo->repo_stars = $request->input('repo_stars');
+        $repo->dev_id = $request->input('dev_id');
+
         $repo->save();
         return response()->json($repo);
     }

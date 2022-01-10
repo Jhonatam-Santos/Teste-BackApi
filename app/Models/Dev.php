@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dev extends Model
 {
     protected $table = 'devs';
-    protected $primaryKey = 'dev_id';
+    protected $primaryKey = 'id';
     protected $dateFormat = 'c';
     public $timestamps = true;
 
