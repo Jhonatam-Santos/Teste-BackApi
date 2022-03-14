@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Repository;
 use Illuminate\Http\Request;
-use App\Models\Dev;
 
 class RepositoryController extends Controller
 {
 
-    public function get()
+    public function get(Request $request)
     {
         return response()->json(Repository::get());
     }
@@ -26,13 +25,26 @@ class RepositoryController extends Controller
         return response()->json($repo);
     }
 
-    public function put(Dev $devs, Request $request, $id)
+    public function put(Repository $repos, $repo_name, Request $request)
     {
+        $repo = $repos->find($repo_name);
+        $repo->repo_name = $request->input('repo_name');
+        $repo->text = $request->input('text');
+        $repo->repo_stars = $request->input('repo_stars');
 
+        $repo->save();
+        return response()->json($repo);
     }
 
-    public function delete(Dev $dev, $id)
+    public function delete(Repository $repo, $repo_name)
     {
+        Repository::destroy($repo_name);
+    }
 
+    public function search(Request $request)
+    {
+        $dev_id = $request->input('dev_id');
+        $repositorios = Repository::where('dev_id', $dev_id)->get();
+        return response()->json($repositorios);
     }
 }
