@@ -55,4 +55,10 @@ class DevController extends Controller
         Dev::destroy($id);
     }
 
+    public function search(Dev $devs, $id)
+    {
+        $dev = $devs->find($id);
+        return response()->json($dev);
+    }
+
 }

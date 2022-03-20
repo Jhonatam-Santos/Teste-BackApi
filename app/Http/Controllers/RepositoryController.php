@@ -25,9 +25,9 @@ class RepositoryController extends Controller
         return response()->json($repo);
     }
 
-    public function put(Repository $repos, $repo_name, Request $request)
+    public function put(Repository $repos, $repo_id, Request $request)
     {
-        $repo = $repos->find($repo_name);
+        $repo = $repos->find($repo_id);
         $repo->repo_name = $request->input('repo_name');
         $repo->text = $request->input('text');
         $repo->repo_stars = $request->input('repo_stars');

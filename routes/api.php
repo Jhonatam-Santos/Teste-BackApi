@@ -9,6 +9,7 @@ Route::post('/Dev', [DevController::class, 'post']);
 Route::get('/Dev', [DevController::class, 'get']);
 Route::put('/Dev/{id}', [DevController::class, 'put']);
 Route::delete('/Dev/{id}', [DevController::class, 'delete']);
+Route::get('/Dev/search/{id}', [DevController::class, 'search']);
 
 Route::post('/Repo', [RepositoryController::class, 'post']);
 Route::get('/Repo', [RepositoryController::class, 'get']);
